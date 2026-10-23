@@ -1,0 +1,41 @@
+ts_forecasting_framework/
+├── configs/                   # Gestión centralizada de hiperparámetros
+│   ├── models.yaml            # Hiperparámetros de modelos (XGBoost, LSTM, VARMAX)
+│   ├── preprocessing.yaml     # Parámetros de ventanas temporales, escaladores
+│   └── environment.yaml       # Variables de entorno y configuración de MLflow
+├── data/                      # Directorio de datos (idealmente en .gitignore)
+│   ├── raw/                   # Datos originales inmutables
+│   └── processed/             # Datos limpios e imputados
+├── notebooks/                 # Entorno para Análisis Exploratorio (EDA)
+│   ├── 01_data_exploration.ipynb
+│   └── 02_feature_engineering.ipynb
+├── src/                       # Código fuente principal
+│   ├── __init__.py
+│   ├── core/                  # Abstracciones y contratos (ABCs)
+│   │   ├── __init__.py
+│   │   ├── interfaces.py      # <- Aquí residirá el código de esta Fase 1
+│   │   └── exceptions.py      # Excepciones personalizadas
+│   ├── data/                  # Implementaciones concretas de datos
+│   │   ├── __init__.py
+│   │   ├── datasets.py        # Implementación de BaseTimeSeriesDataset
+│   │   ├── preprocessors.py   # Implementación de BasePreprocessor
+│   │   └── adapters.py        # Implementación de BaseAdapter
+│   ├── models/                # Implementaciones concretas de modelos
+│   │   ├── __init__.py
+│   │   ├── baseline.py        # Modelos estadísticos (VARMAX)
+│   │   ├── ml_models.py       # Modelos de Machine Learning (XGBoost, Sklearn)
+│   │   └── dl_models.py       # Modelos de Deep Learning (PyTorch)
+│   ├── evaluation/            # Implementaciones de métricas y registro
+│   │   ├── __init__.py
+│   │   └── evaluators.py      # Implementación de BaseEvaluator
+│   └── utils/                 # Utilidades transversales
+│       ├── __init__.py
+│       └── profiler.py        # Decoradores para medir tiempo de ejecución
+├── tests/                     # Pruebas unitarias y de integración (pytest)
+│   ├── test_data.py
+│   ├── test_models.py
+│   └── test_evaluation.py
+├── .gitignore
+├── requirements.txt
+├── README.md
+└── main.py                    # Orquestador del pipeline

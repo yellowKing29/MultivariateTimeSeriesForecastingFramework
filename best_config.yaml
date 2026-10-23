@@ -1,0 +1,7 @@
+models:
+  itransformer:
+    batch_size: 64
+    d_model: 128
+    e_layers: 2
+    learning_rate: 0.00012227835239451694
+    n_heads: 4
